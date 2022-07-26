@@ -1,0 +1,9 @@
+Flask
+gunicorn
+numpy
+sklearn
+pandas
+evidently
+dill
+PyYAML
+-e .
