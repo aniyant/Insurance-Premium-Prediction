@@ -25,7 +25,6 @@ DATA_INGESTION_CONFIG_KEY = "data_ingestion_config"
 DATA_INGESTION_ARTIFACT_DIR = "data_ingestion"
 DATA_INGESTION_DOWNLOAD_URL_KEY = "dataset_download_url"
 DATA_INGESTION_RAW_DATA_DIR_KEY = "raw_data_dir"
-#DATA_INGESTION_TGZ_DOWNLOAD_DIR_KEY = "tgz_download_dir"
 DATA_INGESTION_INGESTED_DIR_NAME_KEY = "ingested_dir"
 DATA_INGESTION_TRAIN_DIR_KEY = "ingested_train_dir"
 DATA_INGESTION_TEST_DIR_KEY = "ingested_test_dir"
@@ -41,19 +40,11 @@ DATA_VALIDATION_REPORT_FILE_NAME_KEY = "report_file_name"
 DATA_VALIDATION_REPORT_PAGE_FILE_NAME_KEY = "report_page_file_name"
 
 # Schema related variables
-DATASET_DETAILS_KEY = "dataset_details"
-DATASET_NUMBER_OF_COLUMNS_KEY = "No_of_columns"
 DATASET_COLUMNS_KEY = "columns"
 DATASET_NUMERICAL_COLUMNS_KEY = "numerical_columns"
 DATASET_CATEGORICAL_COLUMNS_KEY = "categorical_columns"
-DATASET_DATETIME_COLUMNS_KEYS = "datetime_columns"
 DATASET_DOMAIN_VALUE_KEY = "domain_value"
 DATASET_TARGET_COLUMN_KEY ="target_column"
-
-# schema transformed or added columes after eda variables
-SCHEDULED_DELIVERY_DATE_KEY ="Scheduled Delivery Date"
-DELIVERED_TO_CLIENT_DATE_KEY = "Delivered to Client Date"
-LATE_DAYS_BETWEEN_SCHEDULED_DELIVERY_COLUMN_KEY = "late_days_between_delivery_scheduled"
 
 # Data Transformation related variables
 DATA_TRANSFORMATION_ARTIFACT_DIR = "data_transformation"
