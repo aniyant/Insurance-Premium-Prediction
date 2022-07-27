@@ -12,7 +12,7 @@ from insurance.entity.artifact_entity import ModelPusherArtifact, DataIngestionA
 from insurance.entity.artifact_entity import DataValidationArtifact, DataTransformationArtifact, ModelTrainerArtifact
 from insurance.component.data_ingestion import DataIngestion
 from insurance.component.data_validation import DataValidation
-#from insurance.component.data_transformation import DataTransformation
+from insurance.component.data_transformation import DataTransformation
 #from insurance.component.model_trainer import ModelTrainer
 #from insurance.component.model_evaluation import ModelEvaluation
 #from insurance.component.model_pusher import ModelPusher
@@ -134,12 +134,12 @@ class Pipeline(Thread):
             data_ingestion_artifact = self.start_data_ingestion()
             
             data_validation_artifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
-            """
+            
             data_transformation_artifact = self.start_data_transformation(
                 data_ingestion_artifact=data_ingestion_artifact,
                 data_validation_artifact=data_validation_artifact
             )
-        
+            """
             model_trainer_artifact = self.start_model_trainer(data_transformation_artifact=data_transformation_artifact)
 
             model_evaluation_artifact = self.start_model_evaluation(data_ingestion_artifact=data_ingestion_artifact,

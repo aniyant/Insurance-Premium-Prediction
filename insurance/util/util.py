@@ -86,12 +86,11 @@ def load_object(file_path:str):
     except Exception as e:
         raise InsuranceException(e,sys) from e
 
-"""
 def load_data(file_path: str, schema_file_path: str) -> pd.DataFrame:
     try:
         datatset_schema = read_yaml_file(schema_file_path)
 
-        schema = datatset_schema[DATASET_SCHEMA_COLUMNS_KEY]
+        schema = datatset_schema[DATASET_COLUMNS_KEY]
 
         dataframe = pd.read_csv(file_path)
 
@@ -108,5 +107,4 @@ def load_data(file_path: str, schema_file_path: str) -> pd.DataFrame:
         return dataframe
 
     except Exception as e:
-        raise HousingException(e,sys) from e
-"""
+        raise InsuranceException(e,sys) from e
