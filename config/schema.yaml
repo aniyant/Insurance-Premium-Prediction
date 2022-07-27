@@ -1,8 +1,8 @@
 columns:
   age : float
+  sex : category
   bmi : float
   children : float
-  sex : category
   smoker : category
   region : category
   expenses : float

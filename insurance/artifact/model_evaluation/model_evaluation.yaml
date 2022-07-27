@@ -1,5 +1,11 @@
 best_model:
-  model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-15-12-35\trained_model\model.pkl
+  model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-17-48-27\trained_model\model.pkl
 history:
   2022-07-27-15-12-35:
     model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-15-10-26\trained_model\model.pkl
+  2022-07-27-17-45-41:
+    model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-15-12-35\trained_model\model.pkl
+  2022-07-27-17-46-42:
+    model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-17-45-41\trained_model\model.pkl
+  2022-07-27-17-48-27:
+    model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-17-46-42\trained_model\model.pkl
