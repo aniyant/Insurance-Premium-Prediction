@@ -11,7 +11,7 @@ from insurance.entity.model_factory import evaluate_regression_model
 
 
 
-class HousingEstimatorModel:
+class InsuranceEstimatorModel:
     def __init__(self, preprocessing_object, trained_model_object):
         """
         TrainedModel constructor
@@ -43,7 +43,6 @@ class ModelTrainer:
 
     def __init__(self, model_trainer_config:ModelTrainerConfig, data_transformation_artifact: DataTransformationArtifact):
         try:
-            logging.info(f"{'>>' * 30}Model trainer log started.{'<<' * 30} ")
             self.model_trainer_config = model_trainer_config
             self.data_transformation_artifact = data_transformation_artifact
         except Exception as e:
@@ -51,6 +50,7 @@ class ModelTrainer:
 
     def initiate_model_trainer(self)->ModelTrainerArtifact:
         try:
+            logging.info(f"{'>>' * 30}Model trainer log started.{'<<' * 30} ")
             logging.info(f"Loading transformed training dataset")
             transformed_train_file_path = self.data_transformation_artifact.transformed_train_file_path
             train_array = load_numpy_array_data(file_path=transformed_train_file_path)
@@ -85,16 +85,16 @@ class ModelTrainer:
             logging.info(f"Evaluation all trained model on training and testing dataset both")
             metric_info:MetricInfoArtifact = evaluate_regression_model(model_list=model_list,X_train=x_train,y_train=y_train,X_test=x_test,y_test=y_test,base_accuracy=base_accuracy)
 
-            logging.info(f"Best found model on both training and testing dataset.")
+            logging.info(f"Best found model on both training and testing dataset.{metric_info.model_object}")
             
             preprocessing_obj=  load_object(file_path=self.data_transformation_artifact.preprocessed_object_file_path)
             model_object = metric_info.model_object
 
 
             trained_model_file_path=self.model_trainer_config.trained_model_file_path
-            housing_model = HousingEstimatorModel(preprocessing_object=preprocessing_obj,trained_model_object=model_object)
+            insurance_model = InsuranceEstimatorModel(preprocessing_object=preprocessing_obj,trained_model_object=model_object)
             logging.info(f"Saving model at path: {trained_model_file_path}")
-            save_object(file_path=trained_model_file_path,obj=housing_model)
+            save_object(file_path=trained_model_file_path,obj=insurance_model)
 
 
             model_trainer_artifact=  ModelTrainerArtifact(is_trained=True,message="Model Trained successfully",

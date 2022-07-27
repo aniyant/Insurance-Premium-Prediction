@@ -13,9 +13,9 @@ from insurance.entity.artifact_entity import DataValidationArtifact, DataTransfo
 from insurance.component.data_ingestion import DataIngestion
 from insurance.component.data_validation import DataValidation
 from insurance.component.data_transformation import DataTransformation
-#from insurance.component.model_trainer import ModelTrainer
-#from insurance.component.model_evaluation import ModelEvaluation
-#from insurance.component.model_pusher import ModelPusher
+from insurance.component.model_trainer import ModelTrainer
+from insurance.component.model_evaluation import ModelEvaluation
+from insurance.component.model_pusher import ModelPusher
 import os, sys
 from datetime import datetime
 import pandas as pd
@@ -139,9 +139,10 @@ class Pipeline(Thread):
                 data_ingestion_artifact=data_ingestion_artifact,
                 data_validation_artifact=data_validation_artifact
             )
-            """
+            
             model_trainer_artifact = self.start_model_trainer(data_transformation_artifact=data_transformation_artifact)
 
+        
             model_evaluation_artifact = self.start_model_evaluation(data_ingestion_artifact=data_ingestion_artifact,
                                                                     data_validation_artifact=data_validation_artifact,
                                                                     model_trainer_artifact=model_trainer_artifact)
@@ -169,7 +170,7 @@ class Pipeline(Thread):
             logging.info(f"Pipeline experiment: {Pipeline.experiment}")
             self.save_experiment()
 
-        """
+        
         except Exception as e:
             raise InsuranceException(e, sys) from e
 

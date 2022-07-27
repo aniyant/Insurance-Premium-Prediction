@@ -12,7 +12,6 @@ class ModelPusher:
                  model_evaluation_artifact: ModelEvaluationArtifact
                  ):
         try:
-            logging.info(f"{'>>' * 30}Model Pusher log started.{'<<' * 30} ")
             self.model_pusher_config = model_pusher_config
             self.model_evaluation_artifact = model_evaluation_artifact
 
@@ -43,6 +42,7 @@ class ModelPusher:
 
     def initiate_model_pusher(self) -> ModelPusherArtifact:
         try:
+            logging.info(f"{'>>' * 30}Model Pusher log started.{'<<' * 30} ")
             return self.export_model()
         except Exception as e:
             raise InsuranceException(e, sys) from e

@@ -1,0 +1,5 @@
+best_model:
+  model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-15-12-35\trained_model\model.pkl
+history:
+  2022-07-27-15-12-35:
+    model_path: C:\Users\aniyant\Visual-Code-Projects\ml-project\Insurance-Premium-Prediction\insurance\artifact\model_trainer\2022-07-27-15-10-26\trained_model\model.pkl

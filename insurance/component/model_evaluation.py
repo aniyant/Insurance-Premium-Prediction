@@ -3,13 +3,12 @@ from insurance.exception import InsuranceException
 from insurance.entity.config_entity import ModelEvaluationConfig
 from insurance.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,ModelTrainerArtifact,ModelEvaluationArtifact
 from insurance.constant import *
-import numpy as np
-import os
-import sys
 from insurance.util.util import write_yaml_file, read_yaml_file, load_object,load_data
 from insurance.entity.model_factory import evaluate_regression_model
 
-
+import numpy as np
+import os
+import sys
 
 
 class ModelEvaluation:
@@ -19,7 +18,6 @@ class ModelEvaluation:
                  data_validation_artifact: DataValidationArtifact,
                  model_trainer_artifact: ModelTrainerArtifact):
         try:
-            logging.info(f"{'>>' * 30}Model Evaluation log started.{'<<' * 30} ")
             self.model_evaluation_config = model_evaluation_config
             self.model_trainer_artifact = model_trainer_artifact
             self.data_ingestion_artifact = data_ingestion_artifact
@@ -83,6 +81,8 @@ class ModelEvaluation:
 
     def initiate_model_evaluation(self) -> ModelEvaluationArtifact:
         try:
+            logging.info(f"{'>>' * 30}Model Evaluation log started.{'<<' * 30} ")
+
             trained_model_file_path = self.model_trainer_artifact.trained_model_file_path
             trained_model_object = load_object(file_path=trained_model_file_path)
 
@@ -98,7 +98,7 @@ class ModelEvaluation:
                                                           schema_file_path=schema_file_path,
                                                           )
             schema_content = read_yaml_file(file_path=schema_file_path)
-            target_column_name = schema_content[TARGET_COLUMN_KEY]
+            target_column_name = schema_content[DATASET_TARGET_COLUMN_KEY]
 
             # target_column
             logging.info(f"Converting target column into numpy array.")
