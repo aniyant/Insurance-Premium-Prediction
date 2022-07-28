@@ -1,13 +1,10 @@
 from collections import namedtuple
-from datetime import datetime
 import uuid
 from insurance.config.configuration import Configuration
-from insurance.logger import logging, get_log_file_name
+from insurance.logger import logging
 from insurance.exception import InsuranceException
 from threading import Thread
-from typing import List
 
-from multiprocessing import Process
 from insurance.entity.artifact_entity import ModelPusherArtifact, DataIngestionArtifact, ModelEvaluationArtifact
 from insurance.entity.artifact_entity import DataValidationArtifact, DataTransformationArtifact, ModelTrainerArtifact
 from insurance.component.data_ingestion import DataIngestion
@@ -19,7 +16,7 @@ from insurance.component.model_pusher import ModelPusher
 import os, sys
 from datetime import datetime
 import pandas as pd
-from insurance.constant import EXPERIMENT_DIR_NAME, EXPERIMENT_FILE_NAME
+from insurance.constant import EXPERIMENT_DIR_NAME, EXPERIMENT_FILE_NAME,ROOT_DIR
 
 Experiment = namedtuple("Experiment", ["experiment_id", "initialization_timestamp", "artifact_time_stamp",
                                        "running_status", "start_time", "stop_time", "execution_time", "message",
@@ -31,7 +28,7 @@ Experiment = namedtuple("Experiment", ["experiment_id", "initialization_timestam
 
 class Pipeline(Thread):
     experiment: Experiment = Experiment(*([None] * 11))
-    experiment_file_path = None
+    experiment_file_path = os.path.join(ROOT_DIR,"insurance","artifact",EXPERIMENT_DIR_NAME,EXPERIMENT_FILE_NAME)
 
     def __init__(self, config: Configuration ) -> None:
         try:

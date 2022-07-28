@@ -1,18 +1,15 @@
-from flask import Flask, request
-import sys
-
-import pip
 from insurance.util.util import read_yaml_file, write_yaml_file
 from insurance.logger import logging
-from insurance.exception import InsuranceException
-import os, sys
-import json
 from insurance.config.configuration import Configuration
 from insurance.constant import CONFIG_DIR, get_current_time_stamp
 from insurance.pipeline.pipeline import Pipeline
 from insurance.entity.insurance_predictor import InsuranceData,InsurancePredictor
-from flask import send_file, abort, render_template
+from insurance.logger import get_log_dataframe
 
+from flask import send_file, abort, render_template
+from flask import Flask, request
+import os, sys
+import json
 
 ROOT_DIR = os.getcwd()
 LOG_FOLDER_NAME = "logs"
@@ -22,9 +19,6 @@ MODEL_CONFIG_FILE_PATH = os.path.join(ROOT_DIR, CONFIG_DIR, "model.yaml")
 LOG_DIR = os.path.join(ROOT_DIR, LOG_FOLDER_NAME)
 PIPELINE_DIR = os.path.join(ROOT_DIR, PIPELINE_FOLDER_NAME)
 MODEL_DIR = os.path.join(ROOT_DIR, SAVED_MODELS_DIR_NAME)
-
-
-from insurance.logger import get_log_dataframe
 
 INSURANCE_DATA_KEY = "insurance_data"
 INSURANCE_PREMIUM_EXPENSES_KEY = "insurance_expenses"
@@ -112,7 +106,6 @@ def predict():
         children = float(request.form['children'])
         smoker = request.form['smoker']
         region = request.form['region']
-        print(age,sex,bmi,children,smoker,region)
         insurance_data = InsuranceData(age=age,
                                    sex=sex,
                                    bmi=bmi,
@@ -122,8 +115,6 @@ def predict():
                                    )
 
         insurance_df = insurance_data.get_insurance_input_data_frame()
-        print("insurance_df is below")
-        print(insurance_df)
         insurance_predictor = InsurancePredictor(model_dir=MODEL_DIR)
         insurance_expenses = insurance_predictor.predict(X=insurance_df)[0]
         context = {
