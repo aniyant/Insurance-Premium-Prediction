@@ -1,5 +1,6 @@
 # Insurance-Premium-Prediction
 This insurance premium prediction project predicts the premium for the individual person based on some input.
+[Click to check aplication on web](https://insurance-premium-predictor1.herokuapp.com/)
 
 ### Software and account Requirement.
 
