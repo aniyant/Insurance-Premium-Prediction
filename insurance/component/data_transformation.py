@@ -115,9 +115,6 @@ class DataTransformation:
 
             test_arr = np.c_[input_feature_test_arr, np.array(target_feature_test_df)]
             
-            pd.DataFrame(train_arr).to_csv(r"C:\Users\aniyant\Desktop\archive\train.csv", index=False)
-            pd.DataFrame(test_arr).to_csv(r"C:\Users\aniyant\Desktop\archive\test.csv",index=False)
-
             transformed_train_dir = self.data_transformation_config.transformed_train_dir
             transformed_test_dir = self.data_transformation_config.transformed_test_dir
 
