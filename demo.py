@@ -17,7 +17,6 @@ def main():
 
         # df= DataTransformation.load_data(file_path=file_path,schema_file_path=schema_file_path)
         # print(df.columns)
-        # print(df.dtypes)
 
     except Exception as e:
         logging.error(f"{e}")

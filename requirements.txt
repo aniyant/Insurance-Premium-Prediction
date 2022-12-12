@@ -6,4 +6,6 @@ pandas
 evidently
 dill
 PyYAML
+gdown
+mysql-connector-python
 -e .

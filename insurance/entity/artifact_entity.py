@@ -1,5 +1,10 @@
 from collections import namedtuple
 
+DatabaseArtifact = namedtuple("DatabaseArtifact",["database_host",
+                                                    "database_username",
+                                                    "database_password",
+                                                    "database_name",
+                                                    "table_name"])
 
 DataIngestionArtifact = namedtuple("DataIngestionArtifact",[ "train_file_path", 
                                                             "test_file_path", 

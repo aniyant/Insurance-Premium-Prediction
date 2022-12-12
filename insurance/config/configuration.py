@@ -1,10 +1,11 @@
-from insurance.entity.config_entity import DataIngestionConfig, DataTransformationConfig,DataValidationConfig,   \
+from insurance.entity.config_entity import DatabaseConfig,DataIngestionConfig, DataTransformationConfig,DataValidationConfig,   \
 ModelTrainerConfig,ModelEvaluationConfig,ModelPusherConfig,TrainingPipelineConfig
 from insurance.util.util import read_yaml_file
 from insurance.logger import logging
 import sys,os
 from insurance.constant import *
 from insurance.exception import InsuranceException
+import mysql.connector as mysql_connect
 
 
 class Configuration:
@@ -19,6 +20,29 @@ class Configuration:
             self.time_stamp = current_time_stamp
         except Exception as e:
             raise InsuranceException(e,sys) from e
+
+    def get_database_config(self) -> DatabaseConfig:
+        try:
+            host = self.config_info[DATABASE_CONFIG_KEY][DB_HOST_KEY]
+            username = self.config_info[DATABASE_CONFIG_KEY][DB_USERNAME_KEY]
+            password = self.config_info[DATABASE_CONFIG_KEY][DB_PASSWORD_KEY]
+            database_name = self.config_info[DATABASE_CONFIG_KEY][DB_NAME]
+            table_name = self.config_info[DATABASE_CONFIG_KEY][TABLE_NAME]
+
+            db_connect = mysql_connect.connect(host=host, username=username, password=password)
+            logging.info(f"Database Server connection is working fine : host:{host}, username:{username}")
+            db_connect.close()
+
+            database_config=DatabaseConfig(database_host=host,
+                                            database_username=username,
+                                            database_password=password,
+                                            database_name=database_name,
+                                            table_name=table_name
+                                            )
+            logging.info(f"Database Config : {database_config}")
+            return database_config
+        except Exception as e:
+            raise InsuranceException(e,sys) from e 
 
 
     def get_data_ingestion_config(self) ->DataIngestionConfig:
@@ -50,12 +74,11 @@ class Configuration:
                 data_ingestion_info[DATA_INGESTION_TEST_DIR_KEY]
             )
 
-
             data_ingestion_config=DataIngestionConfig(
                 dataset_download_url=dataset_download_url,  
                 raw_data_dir=raw_data_dir, 
                 ingested_train_dir=ingested_train_dir, 
-                ingested_test_dir=ingested_test_dir
+                ingested_test_dir=ingested_test_dir,
             )
             logging.info(f"Data Ingestion config: {data_ingestion_config}")
             return data_ingestion_config

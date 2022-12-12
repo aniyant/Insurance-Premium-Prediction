@@ -71,6 +71,7 @@ def evaluate_regression_model(model_list: list, X_train:np.ndarray, y_train:np.n
             logging.info(f"{'>>'*30}Started evaluating model: [{type(model).__name__}] {'<<'*30}")
             
             #Getting prediction for training and testing dataset
+            print
             y_train_pred = model.predict(X_train)
             y_test_pred = model.predict(X_test)
 

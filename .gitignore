@@ -4,8 +4,12 @@ __pycache__/
 *$py.class
 
 # some custome files
-insurance/artifact
+.idea
 #saved_models/*
+logs/
+logs
+venv
+venv/
 
 # C extensions
 *.so

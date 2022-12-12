@@ -1,5 +1,10 @@
 from collections import namedtuple
 
+DatabaseConfig = namedtuple("DatabaseConfig",["database_host",
+                                                "database_username",
+                                                "database_password",
+                                                "database_name",
+                                                "table_name"])
 
 DataIngestionConfig=namedtuple("DataIngestionConfig",["dataset_download_url",
                                                         "raw_data_dir",

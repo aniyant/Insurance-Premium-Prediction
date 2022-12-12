@@ -2,8 +2,15 @@ training_pipeline_config:
   pipeline_name: insurance
   artifact_dir: artifact
 
+database_config:
+  db_host: Localhost
+  db_username: root
+  db_password: Heartbeat
+  db_name: insurance_dataset
+  table_name: dataset01
+
 data_ingestion_config:
-  dataset_download_url: https://raw.githubusercontent.com/aniyant/Datasets/main/insurance.csv
+  dataset_download_url: 'https://drive.google.com/uc?id=1mJFl1HMX5qdYR8c9Jh1yrXG3OXE-I2s5'
   raw_data_dir: raw_data
   ingested_dir: ingested_data
   ingested_train_dir: train

@@ -13,6 +13,14 @@ CONFIG_FILE_PATH = os.path.join(ROOT_DIR,CONFIG_DIR,CONFIG_FILE_NAME)
 
 CURRENT_TIME_STAMP = get_current_time_stamp()
 
+# database related variables
+DATABASE_CONFIG_KEY="database_config"
+DB_HOST_KEY = "db_host"
+DB_USERNAME_KEY = "db_username"
+DB_PASSWORD_KEY = "db_password"
+DB_NAME = "db_name"
+TABLE_NAME = "table_name"
+
 
 # Training pipeline related variable
 TRAINING_PIPELINE_CONFIG_KEY = "training_pipeline_config"
